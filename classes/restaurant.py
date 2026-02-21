@@ -1,22 +1,20 @@
 class Restaurant:
-    name = ''
-    category = ''
-    active = False 
+    r_list = []
 
-plaza_restaurant = Restaurant()
-plaza_restaurant.name = 'Plaza'
-plaza_restaurant.category = 'Pizza'
+    def __init__(self, name, category):
+        self.name = name
+        self.category = category
+        self.active = False
+        Restaurant.r_list.append(self)
 
-if plaza_restaurant.active:
-    print('Plaza is Active')
-else:
-    print('Plaza is Inactive')
+    def __str__(self):
+        return f'{self.name} | {self.category}'
+    
+    def show_all():
+        for r in Restaurant.r_list:
+            print(f'{r.name} | {r.category}')
 
-biggy_restaurant = Restaurant()
-biggy_restaurant.name = 'Biggy'
-biggy_restaurant.category = 'Fast Food'
-biggy_restaurant.active = True
+plaza_restaurant = Restaurant('Plaza', 'Pizzeria ')
+biggy_restaurant = Restaurant('Biggy', 'Fast Food ')
 
-print(biggy_restaurant)
-print(dir(biggy_restaurant))
-print(vars(biggy_restaurant))
+Restaurant.show_all()
